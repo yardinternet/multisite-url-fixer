@@ -1,5 +1,5 @@
 {
-  "name": "roots/multisite-url-fixer",
+  "name": "yard/multisite-url-fixer",
   "type": "wordpress-muplugin",
   "license": "MIT",
   "description":
@@ -7,21 +7,21 @@
   "homepage": "https://roots.io/bedrock/",
   "keywords": ["wordpress"],
   "support": {
-    "issues": "https://github.com/roots/multisite-url-fixer/issues",
+    "issues": "https://github.com/yardinternet/multisite-url-fixer/issues",
     "forum": "https://discourse.roots.io/"
   },
   "autoload": {
     "psr-4": {
-      "Roots\\Bedrock\\": "src/"
+      "Yard\\Bedrock\\": "src/"
     }
   },
   "require": {
-    "php": ">=7.0.0"
+    "php": ">=7.4"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "^3.1"
+    "yard/php-cs-fixer-rules": "^1.0"
   },
-  "scripts": {
-    "test": ["phpcs --ignore=vendor --extensions=php --standard=PSR2 ."]
-  }
+	"scripts": {
+		"format": "vendor/bin/php-cs-fixer fix"
+	}
 }
