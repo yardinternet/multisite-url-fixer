@@ -22,7 +22,7 @@ class URLFixer
 	{
 		add_filter('option_home', [$this, 'fixHomeURL']);
 		add_filter('option_siteurl', [$this, 'fixSiteURL']);
-		add_filter('network_site_url', [$this, 'fixNetworkSiteURL'], 10, 3);
+		add_filter('network_site_url', [$this, 'fixNetworkSiteURL'], 10, 2);
 	}
 
 	/**
@@ -52,7 +52,7 @@ class URLFixer
 	/**
 	 * Ensure that the network site URL contains the /wp subdirectory.
 	 */
-	public function fixNetworkSiteURL(string $url, string $path, string $scheme): string
+	public function fixNetworkSiteURL(string $url, string $path): string
 	{
 		$path = ltrim($path, '/');
 		$url = substr($url, 0, strlen($url) - strlen($path));
