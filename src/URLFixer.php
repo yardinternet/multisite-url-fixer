@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Yard\Bedrock;
 
+use WP_Http;
+
 /**
  * Class URLFixer
  *
@@ -50,12 +52,15 @@ class URLFixer
 	}
 
 	/**
-	 * Ensure that the network site URL contains the /wp subdirectory.
+	 * Ensure that the network site URL contains the /wp subdirectory and uses the current request host.
 	 */
 	public function fixNetworkSiteURL(string $url, string $path): string
 	{
 		$path = ltrim($path, '/');
-		$url = substr($url, 0, strlen($url) - strlen($path));
+
+		$scheme = is_ssl() ? 'https' : 'http';
+		$host = $_SERVER['HTTP_HOST'] ?? parse_url($url, PHP_URL_HOST);
+		$url = $scheme . '://' . $host . '/';
 
 		if (substr($url, -3) !== 'wp/') {
 			$url .= 'wp/';
