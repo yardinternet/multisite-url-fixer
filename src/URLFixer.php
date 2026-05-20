@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Yard\Bedrock;
 
-use WP_Http;
-
 /**
  * Class URLFixer
  *
